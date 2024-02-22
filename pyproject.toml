@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "md2epub"
+version = "0.1.0"
+description = ""
+authors = ["Jason Swift <anemele@outlook.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+markdown = "^3.5.2"
+lxml = "^5.1.0"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.1"
+lxml-stubs = "^0.5.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
