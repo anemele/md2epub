@@ -15,6 +15,9 @@ lxml = "^5.1.0"
 pytest = "^8.0.1"
 lxml-stubs = "^0.5.1"
 
+[tool.poetry.scripts]
+md2epub = "md2epub.cli:main"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

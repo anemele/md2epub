@@ -8,7 +8,10 @@ from .parser import parse
 
 def create_epub(path: str) -> str:
     """`path`: manifest file path"""
-    manifest, chapters = parse(path)
+    try:
+        manifest, chapters = parse(path)
+    except FileNotFoundError as e:
+        return str(e)
 
     book = epub.EpubBook()
     book.set_uid(manifest.id)
@@ -92,4 +95,4 @@ def create_epub(path: str) -> str:
     with epub.EpubWriter(book) as writer:
         writer.write()
 
-    return filename
+    return f'save at {filename}'

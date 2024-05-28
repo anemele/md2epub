@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from itertools import chain
 from typing import Iterable, Optional
 
+from .consts import ENCODING
 from .split import split_files as _split
 
 
@@ -21,6 +22,29 @@ class Manifest:
     def __post_init__(self):
         if self.id == '':
             self.id = str(uuid.uuid4())
+
+
+def gen_m():
+    tmpl = '''\
+# This is a manifest for parsing a plain text file,
+# which uses a subset of markdown syntax.
+
+# reference: https://www.w3.org/TR/epub-33
+
+id = ''
+title = '书名'
+language = 'zh-CN'
+
+# author(s)
+creators = ['佚名']
+
+# cover = ''
+
+chapters = ['book1.md', 'book2.md']
+'''
+    file = 'book.toml'
+    with open(file, 'w', encoding=ENCODING) as fp:
+        fp.write(tmpl)
 
 
 def _load_manifest(path: str) -> Manifest:
